@@ -167,7 +167,7 @@ fail:
 	return (rv);
 }
 
-static int add_mount(const char *source, const char *target, const char *flags)
+int pyxis_args_add_mount(const char *source, const char *target, const char *flags)
 {
 	int ret;
 	char *entry = NULL;
@@ -245,7 +245,7 @@ static int parse_mount_option(const char *option)
 			flags[i] = ',';
 
 done:
-	ret = add_mount(src, dst, flags);
+	ret = pyxis_args_add_mount(src, dst, flags);
 	if (ret < 0) {
 		slurm_error("pyxis: could not add mount entry: %s:%s", src, dst);
 		goto fail;
